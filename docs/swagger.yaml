@@ -1,0 +1,340 @@
+definitions:
+  forms.ChangePasswordUser:
+    properties:
+      new_password:
+        type: string
+      old_password:
+        type: string
+      username:
+        type: string
+    type: object
+  forms.LoginUser:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  forms.RegisterUser:
+    properties:
+      is_admin:
+        type: boolean
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: Endpoint para mostrar un mensaje de petición correcta
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Peticion correcta" example({"message": "Corrected request
+            get to Main"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+      summary: Muestra que la api está funcionando
+      tags:
+      - Main
+  /api/change_password:
+    post:
+      consumes:
+      - application/json
+      description: Realiza un cambio de contraseña en tu usuario.
+      parameters:
+      - description: Cuerpo de la solicitud
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/forms.ChangePasswordUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Cambio de contraseña" example({"message": "Change password
+            successfully"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "400":
+          description: 'Datos inválidos" example({"message": "Invalid request data"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "401":
+          description: 'Usuario o contraseña incorrecto" example({"message": "Incorrect
+            username or password"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+      summary: Cambio de contraseña
+      tags:
+      - Usuarios
+  /api/delete_user:
+    post:
+      consumes:
+      - application/json
+      description: Elimina un usuario a partir de usuario y contraseña.
+      parameters:
+      - description: Cuerpo de la solicitud
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/forms.LoginUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Usuario borrado con éxito" example({"message": "User delete
+            sucessfully"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "400":
+          description: 'Datos inválidos" example({"message": "Invalid request data"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "401":
+          description: 'Usuario o contraseña incorrecto" example({"message": "Incorrect
+            username or password"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "403":
+          description: 'Error al intentar borrar usuario" example({"message": "Error
+            when trying to delete user"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "404":
+          description: 'Usuario a eliminar no encontrado" example({"message": "User
+            not found to delete"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+      summary: Eliminar usuario
+      tags:
+      - Usuarios
+  /api/login:
+    post:
+      consumes:
+      - application/json
+      description: Inicia sesión en la plataforma y te retorna un token.
+      parameters:
+      - description: Cuerpo de la solicitud
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/forms.LoginUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Genera token" example({"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzUyOTI1NTksInVzZXJuYW1lIjoidGVzdHVzZXIifQ.41PX1i1qWhlidH28a3DF9-8722cnhCXv3b2fNIDvxqA"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "400":
+          description: 'Datos inválidos" example({"message": "Invalid request data"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "401":
+          description: 'Usuario o contraseña incorrecto" example({"message": "Incorrect
+            username or password"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "500":
+          description: 'Error al generar token" example({"message": "Error when trying
+            generate token"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+      summary: Login de usuario
+      tags:
+      - Usuarios
+  /api/register:
+    post:
+      consumes:
+      - application/json
+      description: Permite registrar un nuevo usuario en el sistema.
+      parameters:
+      - description: Cuerpo de la solicitud
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/forms.RegisterUser'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: 'Registro exitoso" example({"message": "username register successfully"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "400":
+          description: 'Datos inválidos" example({"message": "Invalid request data"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "403":
+          description: 'Usuario existente" example({"message": "The username already
+            exists"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+        "404":
+          description: 'Error al registrar" example({"message": "Error when trying
+            to register user"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+      summary: Registro de usuario
+      tags:
+      - Usuarios
+  /test:
+    get:
+      description: Este endpoint requiere un Bearer Token para autenticarse.
+      parameters:
+      - description: Bearer {token}
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Ruta test auth correcta" example({"message": "Test auth uri
+            correct"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Test auth
+      tags:
+      - Main
+swagger: "2.0"
