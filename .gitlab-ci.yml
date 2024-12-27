@@ -13,6 +13,9 @@ build:
   - docker-compose --version
   script:
     - cp .env-example .env
+    - ls -lah
+    - echo "Contenido de .env:"
+    - cat .env
     - docker-compose build
 test:
   stage: test
