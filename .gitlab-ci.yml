@@ -3,6 +3,10 @@ stages:
   - compile
   - test
   - lint
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+
 build:
   stage: compile
   image: tmaier/docker-compose:latest
