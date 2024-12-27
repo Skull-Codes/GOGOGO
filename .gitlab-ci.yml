@@ -13,16 +13,20 @@ build:
     - docker-compose --version
   script:
     - cp .env-example .env
-    - docker-compose up -d  
-    - docker-compose ps
     - docker-compose build
 test:
   stage: test
   image: tmaier/docker-compose:latest
   services:
     - docker:dind
+  before_script:
+    - docker info
+    - docker-compose --version
   script:
-    - docker exec -it api go test tests/*.go -v
+    - cp .env-example .env
+    - docker-compose up -d 
+    - docker-compose ps 
+    - docker-compose run api go test tests/*.go -v 
 lint:
   stage: lint
   image: golang:latest
