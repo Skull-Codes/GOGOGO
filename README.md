@@ -24,7 +24,7 @@ Las tecnologías que utiliza actualmente el proyecto son:
 Los test se pueden ejecutar actualmente desde el proyecto con el comando:
 
 - Local: ``go test tests/*.go`` (tendrás que configurar cosas)
-- Docker (recomendado): ``docker exec -it gogogo-app-1 go test tests/*.go`` utiliza -v para ver mas detalles de los tests ejecutandose.
+- Docker (recomendado): ``docker exec -it api go test tests/*.go`` utiliza -v para ver mas detalles de los tests ejecutandose.
 
 ## Code cuality
 

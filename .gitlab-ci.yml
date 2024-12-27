@@ -19,12 +19,12 @@ build:
     - docker-compose build
 test:
   stage: test
-  image: golang:latest
+  image: tmaier/docker-compose:latest
   script:
-    - go test tests/*.go
+    - docker exec -it api go test tests/*.go -v
 lint:
   stage: lint
-  image: golang:1.22.2
+  image: golang:latest
   before_script:
     - curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s latest
     - mv ./bin/golangci-lint /usr/local/bin/
