@@ -15,10 +15,10 @@ func UserRoutes(r *gin.Engine) {
 		userRoutes.POST("/login", func(c *gin.Context) {
 			controllers.LoginController(c)
 		})
-		userRoutes.POST("/change_password", func(c *gin.Context) {
+		userRoutes.PATCH("/change_password", func(c *gin.Context) {
 			controllers.ChangePasswordController(c)
 		})
-		userRoutes.POST("/delete_user", func(c *gin.Context) {
+		userRoutes.DELETE("/delete_user", func(c *gin.Context) {
 			controllers.DeleteUserController(c)
 		})
 	}

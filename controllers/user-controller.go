@@ -140,7 +140,7 @@ func LoginController(c *gin.Context) {
 // @Success 200 {object} map[string]string{message=string} "Cambio de contraseña" example({"message": "Change password successfully"})
 // @Failure 400 {object} map[string]string{message=string} "Datos inválidos" example({"message": "Invalid request data"})
 // @Failure 401 {object} map[string]string{message=string} "Usuario o contraseña incorrecto" example({"message": "Incorrect username or password"})
-// @Router /api/change_password [post]
+// @Router /api/change_password [patch]
 func ChangePasswordController(c *gin.Context) {
 
 	var user forms.ChangePasswordUser

@@ -11,6 +11,19 @@ Las tecnologías que utiliza actualmente el proyecto son:
 - MongoDB
 - Docker
 
+## Version
+
+**Versión actual**: 1.1.0
+
+* Se ha cambiado el tipo de petición en las siguientes rutas:
+    - change_password/ pasa de POST a PATCH.
+    - delete_user/ pasa de POST a DELETE.
+
+---
+
+**versión**: 1.0.1
+
+* Se corrigió un error ortográfico en el README en la palabra esqueleto, puse exqueleto porque se me vino a la cabeza exoesqueleto y ya comencé a escribirlo así en todos lados.
 
 ## Configurar el proyecto
 
