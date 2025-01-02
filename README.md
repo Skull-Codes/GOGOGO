@@ -13,7 +13,13 @@ Las tecnologías que utiliza actualmente el proyecto son:
 
 ## Version
 
-**Versión actual**: 1.2.0
+**Versión actual**: 1.2.1
+
+* Se ha añadido la ruta estática hacia los archivos en uploads.
+
+---
+
+**Versión**: 1.2.0
 
 * Se han eliminado prints innecesarios en user-controller.go
 * Se ha añadido el método GetUserFromToken para extraer el nombre de usuario a partir del token.

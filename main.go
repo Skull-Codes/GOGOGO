@@ -24,6 +24,8 @@ func main() {
 
 	router := gin.Default()
 
+	router.Static("/uploads", "./uploads")
+
 	// Route list:
 	router.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	routes.MainRouter(router)
