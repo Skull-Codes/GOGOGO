@@ -13,7 +13,15 @@ Las tecnologías que utiliza actualmente el proyecto son:
 
 ## Version
 
-**Versión actual**: 1.1.0
+**Versión actual**: 1.2.0
+
+* Se han eliminado prints innecesarios en user-controller.go
+* Se ha añadido el método GetUserFromToken para extraer el nombre de usuario a partir del token.
+* Se ha creado un directorio uploads para la subida de archivos y su volumen lógico en docker para que no se eliminen los archivos al reconstruir los contenedores.
+
+---
+
+**Versión**: 1.1.0
 
 * Se ha cambiado el tipo de petición en las siguientes rutas:
     - change_password/ pasa de POST a PATCH.
@@ -21,7 +29,7 @@ Las tecnologías que utiliza actualmente el proyecto son:
 
 ---
 
-**versión**: 1.0.1
+**Versión**: 1.0.1
 
 * Se corrigió un error ortográfico en el README en la palabra esqueleto, puse exqueleto porque se me vino a la cabeza exoesqueleto y ya comencé a escribirlo así en todos lados.
 

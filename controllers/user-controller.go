@@ -3,7 +3,6 @@ package controllers
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"gogogo/db"
 	"gogogo/forms"
 	"gogogo/models"
@@ -57,11 +56,8 @@ func RegisterController(c *gin.Context) {
 
 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	user.Password = string(hashedPassword)
-	fmt.Printf("%v", user)
 	_, err = userCollection.InsertOne(ctx, user)
 	if err != nil {
-
-		fmt.Printf("%v", err)
 		c.JSON(404, gin.H{
 			"message": "Error when trying to register user",
 		})
