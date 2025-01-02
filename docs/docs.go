@@ -54,7 +54,7 @@ const docTemplate = `{
             }
         },
         "/api/change_password": {
-            "post": {
+            "patch": {
                 "description": "Realiza un cambio de contraseña en tu usuario.",
                 "consumes": [
                     "application/json"
@@ -479,6 +479,57 @@ const docTemplate = `{
                     },
                     "404": {
                         "description": "Error al registrar\" example({\"message\": \"Error when trying to register user\"})",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "allOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "message": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/media/{filepath}": {
+            "get": {
+                "description": "Este endpoint sirve datos subidos por los usuarios.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Main"
+                ],
+                "summary": "Upload serve",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "example": "\"uploads/testuser/file.mp4\"",
+                        "description": "Ruta del archivo a servir",
+                        "name": "filepath",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Archivo servido correctamente",
+                        "schema": {
+                            "type": "file"
+                        }
+                    },
+                    "500": {
+                        "description": "Illegal request\" example({\"message\": \"Illegal request\"})",
                         "schema": {
                             "type": "object",
                             "additionalProperties": {

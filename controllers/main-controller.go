@@ -1,6 +1,9 @@
 package controllers
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -29,4 +32,27 @@ func TestAuthController(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"message": "Test auth uri correct",
 	})
+}
+
+// @Summary Upload serve
+// @Description Este endpoint sirve datos subidos por los usuarios.
+// @Tags Main
+// @Produce json
+// @Param filepath path string true "Ruta del archivo a servir" example("uploads/testuser/file.mp4")
+// @Success 200 {file} file "Archivo servido correctamente"
+// @Failure 500 {object} map[string]string{message=string} "Illegal request" example({"message": "Illegal request"})
+// @Router /media/{filepath} [get]
+func UploadServe(c *gin.Context) {
+	filepath := c.Param("uploads")
+
+	if !strings.Contains(filepath, "uploads/") {
+		c.JSON(500, gin.H{
+			"message": "Illegal request",
+		})
+		return
+	}
+
+	fullPath := fmt.Sprintf("./%s", filepath)
+
+	c.File(fullPath)
 }

@@ -51,7 +51,7 @@ paths:
       tags:
       - Main
   /api/change_password:
-    post:
+    patch:
       consumes:
       - application/json
       description: Realiza un cambio de contraseña en tu usuario.
@@ -308,6 +308,37 @@ paths:
       summary: Registro de usuario
       tags:
       - Usuarios
+  /media/{filepath}:
+    get:
+      description: Este endpoint sirve datos subidos por los usuarios.
+      parameters:
+      - description: Ruta del archivo a servir
+        example: '"uploads/testuser/file.mp4"'
+        in: path
+        name: filepath
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Archivo servido correctamente
+          schema:
+            type: file
+        "500":
+          description: 'Illegal request" example({"message": "Illegal request"})'
+          schema:
+            additionalProperties:
+              allOf:
+              - type: string
+              - properties:
+                  message:
+                    type: string
+                type: object
+            type: object
+      summary: Upload serve
+      tags:
+      - Main
   /test:
     get:
       description: Este endpoint requiere un Bearer Token para autenticarse.

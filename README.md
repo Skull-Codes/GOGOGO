@@ -13,7 +13,14 @@ Las tecnologías que utiliza actualmente el proyecto son:
 
 ## Version
 
-**Versión actual**: 1.2.1
+**Versión actual**: 1.2.2
+
+* Eliminada la ruta estática a los archivos subidos y ha sido reemplazada por la ruta media/ con un controlador que sirve los archivos y la opción de usar token.
+* Actualizada la documentación de swagger con la ruta media/ y los tests para esta función.
+
+---
+
+**Versión**: 1.2.1
 
 * Se ha añadido la ruta estática hacia los archivos en uploads.
 
@@ -72,6 +79,14 @@ Lo ejecutamos con el siguiente comando:
 2. Para poder generar la documentación tenemos que añadir la siguiente variable a nuestro PATH: ``export PATH=$PATH:~/go/bin``
 3. Recarga la configuración: ``source ~/.bashrc``
 4. Y ahora cada vez que añadimos documentación solo ejecutamos este comando: ``swag init`` y relanzamos los contenedores para que se reflejen los cambios.
+
+## Subida de archivos
+
+Se ha habilitado una estandarización de subida de archivos en la carpeta uploads, estos también tienen su endpoint para ser servidos en la ruta **media/**, desde ahí podemos recuperar archivos bien usando la ruta habilitada que no requiere autenticación o bien usando la ruta con token, ejemplo para recuperar el .gitkeep:
+
+http://localhost:8080/media/uploads/.gitkeep
+
+NOTA: Para ajustarse a las necesidades de cualquier proyecto el acceso a los contenidos de el directorio uploads es total a manos de cualquier usuario con acceso, ya sea por libre o por token. Por tanto hay que tener en cuenta que para mantener la privacidad de los datos hay que modificar los métodos correspodientes reforzando los requerimientos de usuario autorizado y cualquier otro requisito que sea oportuno añadir.
 
 ## Creando un CRUD de ejemplo (videos)
 

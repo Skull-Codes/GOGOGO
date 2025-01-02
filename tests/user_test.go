@@ -33,7 +33,7 @@ func TestRegisterController(t *testing.T) {
 	deleteUser()
 
 	r := gin.Default()
-	r.POST("/register", controllers.RegisterController)
+	r.POST("/api/register", controllers.RegisterController)
 
 	registerData := map[string]any{
 		"username": "testuser",
@@ -41,7 +41,7 @@ func TestRegisterController(t *testing.T) {
 		"is_admin": false,
 	}
 	body, _ := json.Marshal(registerData)
-	req := httptest.NewRequest(http.MethodPost, "/register", bytes.NewReader(body))
+	req := httptest.NewRequest(http.MethodPost, "/api/register", bytes.NewReader(body))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()
@@ -57,14 +57,14 @@ func TestRegisterController(t *testing.T) {
 func TestLoginController(t *testing.T) {
 
 	r := gin.Default()
-	r.POST("/login", controllers.LoginController)
+	r.POST("/api/login", controllers.LoginController)
 
 	loginData := map[string]string{
 		"username": "testuser",
 		"password": "testpassword",
 	}
 	body, _ := json.Marshal(loginData)
-	req := httptest.NewRequest(http.MethodPost, "/login", bytes.NewReader(body))
+	req := httptest.NewRequest(http.MethodPost, "/api/login", bytes.NewReader(body))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()
@@ -80,7 +80,7 @@ func TestLoginController(t *testing.T) {
 func TestChangePasswordController(t *testing.T) {
 
 	r := gin.Default()
-	r.POST("/change_password", controllers.ChangePasswordController)
+	r.PATCH("/api/change_password", controllers.ChangePasswordController)
 
 	loginData := map[string]string{
 		"username":     "testuser",
@@ -88,7 +88,7 @@ func TestChangePasswordController(t *testing.T) {
 		"new_password": "newpassword",
 	}
 	body, _ := json.Marshal(loginData)
-	req := httptest.NewRequest(http.MethodPost, "/change_password", bytes.NewReader(body))
+	req := httptest.NewRequest(http.MethodPatch, "/api/change_password", bytes.NewReader(body))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()
@@ -104,14 +104,14 @@ func TestChangePasswordController(t *testing.T) {
 func TestDeleteUserController(t *testing.T) {
 
 	r := gin.Default()
-	r.POST("/delete_user", controllers.DeleteUserController)
+	r.DELETE("/api/delete_user", controllers.DeleteUserController)
 
 	loginData := map[string]string{
 		"username": "testuser",
 		"password": "newpassword",
 	}
 	body, _ := json.Marshal(loginData)
-	req := httptest.NewRequest(http.MethodPost, "/delete_user", bytes.NewReader(body))
+	req := httptest.NewRequest(http.MethodDelete, "/api/delete_user", bytes.NewReader(body))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()
