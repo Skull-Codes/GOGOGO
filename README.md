@@ -1,5 +1,7 @@
 # GOGOGO - Esqueleto básico en GIN-Gonic
 
+![GOGOGO Logo](https://repository-images.githubusercontent.com/911583758/38c0ddef-c0db-4602-a884-3820990e67fe)
+
 He creado este esqueleto con el fin de simplificar un poco el tedioso proceso de empezar a crear un proyecto en blanco sin ninguna referencia base. 
 
 Este proyecto se basa en un patrón MVC para API Rest con un sistema de autenticación JWT ya implementado, tests unitarios, linter y pipelines para CI_CD en Github y Gitlab. El proyecto está docketizado y adaptado a MongoDB
