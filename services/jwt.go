@@ -2,7 +2,9 @@ package services
 
 import (
 	"errors"
+	"fmt"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -12,9 +14,15 @@ import (
 var jwtSecret = []byte(os.Getenv("JWT_SECRET"))
 
 func GenerateJWT(username string) (string, error) {
+	jwtExpiresIn, err := strconv.ParseInt(os.Getenv("JWT_EXPIRES_IN"), 10, 64)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return "", errors.New("invalid time expired token")
+	}
+
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"username": username,
-		"exp":      time.Now().Add(24 * time.Hour).Unix(),
+		"exp":      time.Now().Add(time.Duration(jwtExpiresIn) * time.Hour).Unix(),
 	})
 
 	return token.SignedString(jwtSecret)
