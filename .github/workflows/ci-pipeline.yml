@@ -45,7 +45,7 @@ jobs:
           cp .env-example .env
           docker-compose up -d
           docker-compose ps
-          docker-compose run gogogo-api go test tests/*.go -v
+          docker-compose run api go test tests/*.go -v
 
   lint:
     runs-on: ubuntu-latest
