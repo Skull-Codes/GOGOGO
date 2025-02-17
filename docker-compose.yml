@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   api:
-    container_name: api
+    container_name: gogogo-api
     build:
       context: .
       dockerfile: Dockerfile
@@ -19,7 +19,7 @@ services:
 
   mongo:
     image: mongo:6.0
-    container_name: mongo
+    container_name: gogogo-mongo
     ports:
       - "${DB_PORT}:27017"
     environment:
