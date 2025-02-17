@@ -15,7 +15,13 @@ Las tecnologías que utiliza actualmente el proyecto son:
 
 ## Version
 
-**Versión actual**: 1.2.4
+**Versión actual**: 1.2.5
+
+* Se ha cambiado el nombre de los contenedores asignando el prefijo gogogo-
+
+---
+
+**Versión**: 1.2.4
 
 * Se ha añadido una variable de entorno para definir el tiempo que tarda en expirar el token.
 
