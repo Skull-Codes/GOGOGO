@@ -202,7 +202,7 @@ func ChangePasswordController(c *gin.Context) {
 // @Failure 401 {object} map[string]string{message=string} "Usuario o contraseña incorrecto" example({"message": "Incorrect username or password"})
 // @Failure 403 {object} map[string]string{message=string} "Error al intentar borrar usuario" example({"message": "Error when trying to delete user"})
 // @Failure 404 {object} map[string]string{message=string} "Usuario a eliminar no encontrado" example({"message": "User not found to delete"})
-// @Router /api/delete_user [post]
+// @Router /api/delete_user [delete]
 func DeleteUserController(c *gin.Context) {
 
 	var user forms.LoginUser
