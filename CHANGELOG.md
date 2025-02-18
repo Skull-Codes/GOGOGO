@@ -1,3 +1,9 @@
+## 1.2.6 (18-01-2025)
+
+### Cambios
+
+* Se ha añadido un archivo estatico en el directorio uploads para simplificar el testeo.
+
 ## 1.2.5 (17-01-2025)
 
 * Se ha cambiado el nombre de los contenedores asignando el prefijo gogogo-
